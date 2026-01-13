@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolyPack Solutions | Premium Plastic Packaging</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary-blue: #0056A7;
+            --secondary-green: #2E8B57;
+            --accent-orange: #FF6B35;
+            --light-gray: #F5F7FA;
+            --dark-gray: #333333;
+            --text-color: #444444;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            color: var(--primary-blue);
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo-text span {
+            color: var(--secondary-green);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            font-size: 15px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #004085;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-green);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #26734d;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary-blue);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 167, 0.85), rgba(0, 86, 167, 0.9)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-hero {
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 6px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background-color: var(--light-gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-gray);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--dark-gray);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 20px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        /*button.product-card {
+            all: unset; /* Resets default button styles 
+            display: block;
+            cursor: pointer;
+        }*/
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: #e9f2fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 60px;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: #e9f2fa;
+            color: var(--primary-blue);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .tag.green {
+            background-color: #e8f5e9;
+            color: var(--secondary-green);
+        }
+
+        /* Sustainability Section */
+        /*.sustainability {
+            padding: 80px 20px;
+            background-color: #f0f9f4;
+        }
+
+        .sustainability-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .sustainability-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .sustainability-text h2 {
+            font-size: 36px;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+
+        .sustainability-stats {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--secondary-green);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+        }*/
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(to right, var(--primary-blue), #0077cc);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #bbb;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-green);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            color: white;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-blue);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            nav ul {
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            nav ul li {
+                width: 100%;
+            }
+            
+            nav a {
+                display: block;
+                padding: 15px 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-hero {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-recycle logo-icon"></i>
+                <div class="logo-text">Poly<span>Pack</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <!--<li><a href="#industries">Industries</a></li>-->
+                    <!--<li><a href="#sustainability">Sustainability</a></li>-->
+                    <!--<li><a href="#about">About</a></li>-->
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-cta">
+                <button class="btn btn-primary">Get Quote</button>
+                <!--<button class="btn btn-secondary"><i class="fas fa-phone"></i> 24/7 Support</button>-->
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Supplier & Manufacturing of Plastics</h1>
+            <p>Custom Manufacturing • Delivery within Malaysia  </p>
+            <div class="hero-btns">
+                <button class="btn btn-primary btn-hero">View Products</button>
+                <button class="btn btn-secondary btn-hero">Request Custom Quote</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose PolyPack?</h2>
+                <p>We combine innovative technology with sustainable practices to deliver exceptional packaging solutions.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-cogs feature-icon"></i>
+                    <h3>100% Customizable</h3>
+                    <p>Tailored solutions designed to meet your specific product requirements and branding needs.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3>Eco-Friendly Options</h3>
+                    <p>Wide range of sustainable materials including recycled content and biodegradable options.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-shipping-fast feature-icon"></i>
+                    <h3>Fast Turnaround</h3>
+                    <p>Quick 2-4 week production time with reliable global shipping to meet your deadlines.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-award feature-icon"></i>
+                    <h3>Certified Quality</h3>
+                    <p>ISO 9001 certified with FDA compliance for food, medical, and pharmaceutical packaging.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Product Range</h2>
+                <p>Comprehensive packaging solutions for every industry need</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Roll Form</h3>
+                        <div class="product-tags">
+                            <span class="tag">Rice Bags</span>
+                            <span class="tag">Pet Food Bags</span>
+                            <span class="tag">Multipurpose Plastic Rolls</span>
+                            <span class="tag green">etc...</span>
+                        </div>
+                        <p>Example description: Durable packaging solutions for cosmetics, pharmaceuticals, and food products.</p>
+                    </div>
+                </div>
+
+                
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-bag-shopping"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Pouch / Bag Form</h3>
+                        <div class="product-tags">
+                            <span class="tag">Pouches & Bags</span>
+                            <span class="tag">Shrink Films</span>
+                            <span class="tag green">Biodegradable</span>
+                        </div>
+                        <p>Example description: Lightweight, cost-effective packaging ideal for snacks, powders, and retail products.</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-prescription-bottle-medical"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3>Specialty Packaging</h3>
+                        <div class="product-tags">
+                            <span class="tag">Medical Grade</span>
+                            <span class="tag">Child-Resistant</span>
+                            <span class="tag">Food Safe</span>
+                        </div>
+                        <p>Compliant packaging solutions for regulated industries with special requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <!--<section class="sustainability" id="sustainability">
+        <div class="container">
+            <div class="sustainability-content">
+                <div class="sustainability-text">
+                    <h2>Our Green Commitment</h2>
+                    <p>At PolyPack Solutions, we believe in protecting our planet while delivering exceptional packaging. We're committed to reducing plastic waste through innovative materials and circular economy practices.</p>
+                    <p>Our sustainable line includes options with up to 100% recycled content, plant-based biodegradable materials, and compostable packaging that breaks down safely.</p>
+                    <button class="btn btn-secondary" style="margin-top: 20px;">Learn About Our Initiatives</button>
+                </div>
+                
+                <div class="sustainability-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">45%</div>
+                        <div class="stat-label">Reduced Carbon Footprint</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Recycled Material Usage</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Sustainable Products</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">2025</div>
+                        <div class="stat-label">Zero Waste Goal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Package Your Products?</h2>
+            <p>Get a free quote for your custom packaging needs. Our experts will help you select the right materials and design for your specific requirements.</p>
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" style="padding: 15px 30px; font-size: 16px;">Request a Quote</button>
+                <!--<button class="btn" style="padding: 15px 30px; font-size: 16px; background-color: white; color: var(--primary-blue);">Schedule a Consultation</button>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PolyPack Solutions</h3>
+                    <p>Leading provider of innovative plastic packaging solutions with a commitment to sustainability and quality.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <!--<li><a href="#sustainability">Sustainability</a></li>-->
+                        <!--<li><a href="#about">About Us</a></li>-->
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!--<div class="footer-column">
+                    <h3>Industries</h3>
+                    <ul>
+                        <li><a href="#">Food & Beverage</a></li>
+                        <li><a href="#">Pharmaceuticals</a></li>
+                        <li><a href="#">Cosmetics</a></li>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Agriculture</a></li>
+                    </ul>
+                </div>-->
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Packaging Blvd, Industrial Park, CA 90210</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@polypacksolutions.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-6PM EST</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PolyPack Solutions. All rights reserved. | ISO 9001:2015 Certified | FDA Compliant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Button click handlers
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonText = this.textContent;
+                if(buttonText.includes('Quote') || buttonText.includes('Consultation')) {
+                    alert('Thank you for your interest! Our packaging experts will contact you within 24 hours.');
+                } else if(buttonText.includes('Products')) {
+                    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const openCarouselButton = document.getElementById('open-carousel');
+    const carouselOverlay = document.getElementById('carousel-overlay');
+    const closeCarouselButton = document.querySelector('.close-carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevButton = document.querySelector('.carousel-prev');
+    const nextButton = document.querySelector('.carousel-next');
+    let currentSlide = 0;
+
+    // Open carousel when button is clicked
+    openCarouselButton.addEventListener('click', function () {
+        carouselOverlay.classList.remove('hidden');
+        showSlide(currentSlide);
+    });
+
+    // Close carousel when close button is clicked
+    closeCarouselButton.addEventListener('click', function () {
+        carouselOverlay.classList.add('hidden');
+    });
+
+    // Show the current slide
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.style.transform = `translateX(${(i - index) * 100}%)`;
+        });
+    }
+
+    // Navigate to the previous slide
+    prevButton.addEventListener('click', function () {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    });
+
+    // Navigate to the next slide
+    nextButton.addEventListener('click', function () {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    });
+});
+    </script>
+</body>
+</html>
